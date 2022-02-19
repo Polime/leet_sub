@@ -10,7 +10,7 @@ import java.util.List;
 class LeetApplicationTests {
     @Test
     void contextLoads() {
-        longestCommonPrefix();
+        pancakeSort();
     }
 
     void summaryRanges() {
@@ -72,5 +72,11 @@ class LeetApplicationTests {
         String[] strs = {"flower","floweqr","flish","flo"};
         String s = Solution.longestCommonPrefix(strs);
         System.out.println(s);
+    }
+
+    void pancakeSort(){
+        int[] arr = {3,2,4,1};
+        List<Integer> list = Solution.pancakeSort(arr);
+        System.out.println(list);
     }
 }

@@ -533,9 +533,72 @@ class Solution {
     }
 
     //969. 煎饼排序
-    public List<Integer> pancakeSort(int[] arr) {
+    public static List<Integer> pancakeSort(int[] arr) {
 //    1.检测是否排完序
-//    2.获取子数组中最大的数字
+//    2.获取子数组中最大的数字的位置
 //    3.子数组反转
+//    4.检测最大值是否在数组末尾
+//    5.在数组末尾则子数组减少一位，否则继续循环
+        List<Integer> resultList = new ArrayList<>();
+        int length = arr.length;
+        while (true) {
+            if (checkSort(arr)) {
+                break;
+            }
+            length = maxNumber(arr, length);
+            int max = arr[length];
+            resultList.add(length + 1);
+            arr = arrReversal(arr, length);
+            if (checkMax(arr, max)) {
+                length--;
+            }
+        }
+        return resultList;
+
+//        1.记录最大值所在位置下标
+//        2.最大值到达数组最后一位
+    }
+
+    //检测是否排完序
+    private static boolean checkSort(int[] arr) {
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i - 1] > arr[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    //获取子数组中最大的数字的位置
+    private static int maxNumber(int[] arr, int length) {
+        int max = 0;
+        int index = 0;
+        for (int i = 0; i < length; i++) {
+            if (max < arr[i]) {
+                max = arr[i];
+                index = i;
+            }
+        }
+        return index;
+    }
+
+    //子数组反转
+    private static int[] arrReversal(int[] arr, int index) {
+        int n = 0;
+        int[] res = new int[arr.length];
+        for (int i = index - 1; i >= 0; i--) {
+            res[n] = arr[i];
+            n++;
+        }
+        for (int i = index; i < arr.length; i++) {
+            res[n] = arr[i];
+            n++;
+        }
+        return res;
+    }
+
+    //检测最大值是否在数组末尾
+    private static boolean checkMax(int[] arr, int max) {
+        return arr[arr.length - 1] == max;
     }
 }
