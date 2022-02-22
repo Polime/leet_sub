@@ -10,7 +10,7 @@ import java.util.List;
 class LeetApplicationTests {
     @Test
     void contextLoads() {
-        pancakeSort();
+        isOneBitCharacter();
     }
 
     void summaryRanges() {
@@ -78,5 +78,10 @@ class LeetApplicationTests {
         int[] arr = {3,2,4,1};
         List<Integer> list = Solution.pancakeSort(arr);
         System.out.println(list);
+    }
+
+    void isOneBitCharacter(){
+        int[] arr = {1,1,0};
+        System.out.println(Solution.isOneBitCharacter(arr));
     }
 }

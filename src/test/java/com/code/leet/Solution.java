@@ -601,4 +601,24 @@ class Solution {
     private static boolean checkMax(int[] arr, int max) {
         return arr[arr.length - 1] == max;
     }
+
+    //717. 1 比特与 2 比特字符
+    public static boolean isOneBitCharacter(int[] bits) {
+        if(bits.length == 1){
+            return true;
+        }
+        int num = 0;
+        while (num < bits.length) {
+            if (bits[num] == 0) {
+                num += 1;
+            }
+            if (bits[num] == 1) {
+                num += 2;
+            }
+            if (num == bits.length - 1) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
