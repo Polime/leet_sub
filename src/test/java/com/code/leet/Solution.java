@@ -537,26 +537,23 @@ class Solution {
 //    1.检测是否排完序
 //    2.获取子数组中最大的数字的位置
 //    3.子数组反转
-//    4.检测最大值是否在数组末尾
-//    5.在数组末尾则子数组减少一位，否则继续循环
+//        3.1 将最大值反转到第一位
+//        3.2 将最大值反转到所在长度的最后一位
+//    4.长度减少一位
         List<Integer> resultList = new ArrayList<>();
         int length = arr.length;
-        while (true) {
-            if (checkSort(arr)) {
-                break;
-            }
-            length = maxNumber(arr, length);
-            int max = arr[length];
-            resultList.add(length + 1);
+        while (!checkSort(arr)) {
+            //最大值位置
+            int index = maxNumber(arr, length);
+            resultList.add(index);
+            //最大值放置第一位
+            arr = arrReversal(arr, index);
+            resultList.add(length);
+            //最大值放置最后一位
             arr = arrReversal(arr, length);
-            if (checkMax(arr, max)) {
-                length--;
-            }
+            length -= 1;
         }
         return resultList;
-
-//        1.记录最大值所在位置下标
-//        2.最大值到达数组最后一位
     }
 
     //检测是否排完序
@@ -579,7 +576,7 @@ class Solution {
                 index = i;
             }
         }
-        return index;
+        return index + 1;
     }
 
     //子数组反转
@@ -597,14 +594,10 @@ class Solution {
         return res;
     }
 
-    //检测最大值是否在数组末尾
-    private static boolean checkMax(int[] arr, int max) {
-        return arr[arr.length - 1] == max;
-    }
 
     //717. 1 比特与 2 比特字符
     public static boolean isOneBitCharacter(int[] bits) {
-        if(bits.length == 1){
+        if (bits.length == 1) {
             return true;
         }
         int num = 0;

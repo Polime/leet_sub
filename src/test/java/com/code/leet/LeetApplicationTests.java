@@ -10,7 +10,7 @@ import java.util.List;
 class LeetApplicationTests {
     @Test
     void contextLoads() {
-        isOneBitCharacter();
+        pancakeSort();
     }
 
     void summaryRanges() {
