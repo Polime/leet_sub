@@ -467,9 +467,9 @@ class Solution {
     }
 
     //169. 多数元素
+    //面试题 17.10. 主要元素
     public static int majorityElement(int[] nums) {
         return 1;
-
     }
 
     //540. 有序数组中的单一元素
@@ -594,7 +594,6 @@ class Solution {
         return res;
     }
 
-
     //717. 1 比特与 2 比特字符
     public static boolean isOneBitCharacter(int[] bits) {
         if (bits.length == 1) {
@@ -614,4 +613,57 @@ class Solution {
         }
         return false;
     }
+
+    //剑指 Offer 64. 求1+2+…+n
+    public static int sumNums(int n) {
+        return n + sumNums(n - 1);
+    }
+
+    //面试题 10.02. 变位词组
+    public static List<List<String>> groupAnagrams(String[] strs) {
+//        Map<String, List<String>> temp = new HashMap<>();
+//        List<List<String>> res = new ArrayList<>();
+//        for (String str : strs) {
+//            List<String> strings = new ArrayList<>();
+//            char[] chars = str.toCharArray();
+//            Arrays.sort(chars);
+//            String string = Arrays.toString(chars);
+//            if (temp.containsKey(string)) {
+//                strings = temp.get(string);
+//            }
+//            strings.add(str);
+//            temp.put(string, strings);
+//        }
+//        temp.keySet().forEach(e -> res.add(temp.get(e)));
+//        return res;
+
+        Map<String, List<String>> map = new HashMap<>();
+        for (String str : strs) {
+            char[] array = str.toCharArray();
+            Arrays.sort(array);
+            String key = new String(array);
+            List<String> list = map.getOrDefault(key, new ArrayList<>());
+            list.add(str);
+            map.put(key, list);
+        }
+        return new ArrayList<>(map.values());
+
+//        List<List<String>> res = new ArrayList<>();
+//        List<String> tempStr = new ArrayList<>();
+//        for (String str : strs) {
+//            char[] chars = str.toCharArray();
+//            Arrays.sort(chars);
+//            String string = Arrays.toString(chars);
+//            if (tempStr.contains(string)) {
+//                res.get(tempStr.indexOf(string)).add(str);
+//            } else {
+//                res.add(new ArrayList<String>() {{
+//                    add(str);
+//                }});
+//                tempStr.add(string);
+//            }
+//        }
+//        return res;
+    }
+
 }

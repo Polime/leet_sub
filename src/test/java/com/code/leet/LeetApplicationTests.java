@@ -10,7 +10,7 @@ import java.util.List;
 class LeetApplicationTests {
     @Test
     void contextLoads() {
-        pancakeSort();
+        majorityElement();
     }
 
     void summaryRanges() {
@@ -50,38 +50,52 @@ class LeetApplicationTests {
     }
 
     void numWaterBottles() {
-        int numWaterBottles = Solution.numWaterBottles(9,3);
+        int numWaterBottles = Solution.numWaterBottles(9, 3);
         System.out.println(numWaterBottles);
     }
 
-    void isUnique(){
+    void isUnique() {
         System.out.println(Solution.isUnique("leetcode"));
     }
 
-    void luckyNumbers(){
+    void luckyNumbers() {
         int[][] matrix = {{3, 7, 8}, {9, 11, 13}, {15, 16, 17}};
         Solution.luckyNumbers(matrix);
     }
 
-    void findCenter(){
-        int[][] matrix = {{1,2}, {2,3}, {4,2}};
+    void findCenter() {
+        int[][] matrix = {{1, 2}, {2, 3}, {4, 2}};
         Solution.findCenter(matrix);
     }
 
-    void longestCommonPrefix(){
-        String[] strs = {"flower","floweqr","flish","flo"};
+    void longestCommonPrefix() {
+        String[] strs = {"flower", "floweqr", "flish", "flo"};
         String s = Solution.longestCommonPrefix(strs);
         System.out.println(s);
     }
 
-    void pancakeSort(){
-        int[] arr = {3,2,4,1};
+    void pancakeSort() {
+        int[] arr = {3, 2, 4, 1};
         List<Integer> list = Solution.pancakeSort(arr);
         System.out.println(list);
     }
 
-    void isOneBitCharacter(){
-        int[] arr = {1,1,0};
+    void isOneBitCharacter() {
+        int[] arr = {1, 1, 0};
         System.out.println(Solution.isOneBitCharacter(arr));
+    }
+
+    void sumNums() {
+        System.out.println(Solution.sumNums(9));
+    }
+
+    void groupAnagrams() {
+        String[] strs = new String[]{"eat", "tea", "tan", "ate", "nat", "bat"};
+        System.out.println(Solution.groupAnagrams(strs));
+    }
+
+    void majorityElement() {
+        int[] arr = new int[]{1, 2, 5, 9, 5, 9, 5, 5, 5};
+        System.out.println(Solution.majorityElement(arr));
     }
 }
