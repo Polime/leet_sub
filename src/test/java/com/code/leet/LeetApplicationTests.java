@@ -10,7 +10,7 @@ import java.util.List;
 class LeetApplicationTests {
     @Test
     void contextLoads() {
-        majorityElement();
+        complexNumberMultiply();
     }
 
     void summaryRanges() {
@@ -97,5 +97,20 @@ class LeetApplicationTests {
     void majorityElement() {
         int[] arr = new int[]{1, 2, 5, 9, 5, 9, 5, 5, 5};
         System.out.println(Solution.majorityElement(arr));
+    }
+
+    void reverseOnlyLetters() {
+        String s = "az-cd";
+        String s1 = "a-bC-dEf-ghIj";
+        String s2 = "-a-bC-dfhj";
+        String s3 = "azAZ-bC-";
+        String s4 = "7_28]";
+        System.out.println(Solution.reverseOnlyLetters(s2));
+    }
+
+    void complexNumberMultiply() {
+        String num1 = "78+-76i";
+        String num2 = "-86+72i";
+        System.out.println(Solution.complexNumberMultiply(num1, num2));
     }
 }

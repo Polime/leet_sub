@@ -666,4 +666,67 @@ class Solution {
 //        return res;
     }
 
+    //917. 仅仅反转字母
+    public static String reverseOnlyLetters(String s) {
+//        int num = s.length();
+//        char[] resArr = new char[s.length()];
+//        char[] chars = s.toCharArray();
+//        for (int i = 0; i < chars.length; i++) {
+//            if ((chars[i] > 64 && chars[i] < 91) || (chars[i] > 96 && chars[i] < 123)) {
+//                while (true) {
+//                    num--;
+//                    if ((chars[num] > 64 && chars[num] < 91) || (chars[num] > 96 && chars[num] < 123)) {
+//                        resArr[i] = chars[num];
+//                        break;
+//                    }
+//                }
+//            } else {
+//                resArr[i] = chars[i];
+//            }
+//        }
+//        return new String(resArr);
+
+        char[] chars = s.toCharArray();
+        int num = s.length();
+        char temp;
+        for (int i = 0; i < chars.length; i++) {
+            if (i >= num) {
+                break;
+            }
+            if ((chars[i] > 64 && chars[i] < 91) || (chars[i] > 96 && chars[i] < 123)) {
+                while (true) {
+                    num--;
+                    if ((chars[num] > 64 && chars[num] < 91) || (chars[num] > 96 && chars[num] < 123)) {
+                        temp = chars[i];
+                        chars[i] = chars[num];
+                        chars[num] = temp;
+                        break;
+                    }
+                }
+            }
+        }
+        return new String(chars);
+
+        //双指针试试
+    }
+
+    //537. 复数乘法
+    public static String complexNumberMultiply(String num1, String num2) {
+//        String[] split1 = num1.split("\\+");
+//        String[] split2 = num2.split("\\+");
+//        int imaginary1 = Integer.parseInt(split1[1].replace("i", ""));
+//        int imaginary2 = Integer.parseInt(split2[1].replace("i", ""));
+//        int real = Integer.parseInt(split1[0]) * Integer.parseInt(split2[0]);
+//        int imaginary = imaginary1 * Integer.parseInt(split2[0]) + imaginary2 * Integer.parseInt(split1[0]);
+//        int imagNum = imaginary1 * imaginary2;
+//        return (real - imagNum) + "+" + imaginary + "i";
+
+        String[] split1 = num1.split("\\+");
+        String[] split2 = num2.split("\\+");
+        int imaginary = Integer.parseInt(split1[1].replace("i", "")) * Integer.parseInt(split2[0]) +
+                Integer.parseInt(split2[1].replace("i", "")) * Integer.parseInt(split1[0]);
+        int imagNum = Integer.parseInt(split1[1].replace("i", "")) * Integer.parseInt(split2[1].replace("i", ""));
+        return (Integer.parseInt(split1[0]) * Integer.parseInt(split2[0]) - imagNum) + "+" + imaginary + "i";
+    }
+
 }
