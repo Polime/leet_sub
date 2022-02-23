@@ -729,4 +729,41 @@ class Solution {
         return (Integer.parseInt(split1[0]) * Integer.parseInt(split2[0]) - imagNum) + "+" + imaginary + "i";
     }
 
+    //1282. 用户分组
+    public static List<List<Integer>> groupThePeople(int[] groupSizes) {
+//        Map<Integer, List<Integer>> map = new HashMap<>();
+//        List<List<Integer>> res = new ArrayList<>();
+//        for (int i = 0; i < groupSizes.length; i++) {
+//            List<Integer> orDefault = map.getOrDefault(groupSizes[i], new ArrayList<>());
+//            orDefault.add(i);
+//            if (orDefault.size() == groupSizes[i]) {
+//                res.add(orDefault);
+//                map.remove(groupSizes[i]);
+//            } else {
+//                map.put(groupSizes[i], orDefault);
+//            }
+//        }
+//        return res;
+
+
+        //哈希计数
+        Map<Integer, List<Integer>> map = new HashMap<>();
+        List<List<Integer>> res = new ArrayList<>();
+        for (int i = 0; i < groupSizes.length; i++) {
+            List<Integer> orDefault = map.getOrDefault(groupSizes[i], new ArrayList<>());
+            orDefault.add(i);
+            map.put(groupSizes[i], orDefault);
+        }
+        map.forEach((key, value) -> {
+            int i = value.size() / key;
+            if (i == 1) {
+                res.add(value);
+            } else {
+                for (int j = 0; j < i; j++) {
+                    res.add(value.subList(j * key, (j+1)*key));
+                }
+            }
+        });
+        return res;
+    }
 }

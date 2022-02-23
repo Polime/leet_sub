@@ -10,7 +10,7 @@ import java.util.List;
 class LeetApplicationTests {
     @Test
     void contextLoads() {
-        complexNumberMultiply();
+        groupThePeople();
     }
 
     void summaryRanges() {
@@ -112,5 +112,10 @@ class LeetApplicationTests {
         String num1 = "78+-76i";
         String num2 = "-86+72i";
         System.out.println(Solution.complexNumberMultiply(num1, num2));
+    }
+
+    void groupThePeople(){
+        int[] group = new int[]{2,2,1,1,1,1,1,1};
+        System.out.println(Solution.groupThePeople(group));
     }
 }
