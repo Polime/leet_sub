@@ -3,6 +3,7 @@ package com.code.leet;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
 class LeetApplicationTests {
     @Test
     void contextLoads() {
-        groupThePeople();
+        maxIncreaseKeepingSkyline();
     }
 
     void summaryRanges() {
@@ -118,4 +119,24 @@ class LeetApplicationTests {
         int[] group = new int[]{2,2,1,1,1,1,1,1};
         System.out.println(Solution.groupThePeople(group));
     }
+
+    void maxIncreaseKeepingSkyline(){
+        int[][] num = new int[][]{{3,0,8,4},{2,4,5,7},{9,2,6,3},{0,3,1,0}};
+        System.out.println(Solution.maxIncreaseKeepingSkyline(num));
+    }
+
+//    修改cache
+//    public static void main(String[] args) throws NoSuchFieldException, IllegalAccessException {
+//
+//        Class cache = Integer.class.getDeclaredClasses()[0]; //1
+//        Field myCache = cache.getDeclaredField("cache"); //2
+//        myCache.setAccessible(true);//3
+//
+//        Integer[] newCache = (Integer[]) myCache.get(cache); //4
+//        newCache[132] = newCache[133]; //5
+//
+//        int a = 2;
+//        int b = a + a;
+//        System.out.printf("%d + %d = %d", a, a, b); //
+//    }
 }

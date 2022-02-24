@@ -760,10 +760,56 @@ class Solution {
                 res.add(value);
             } else {
                 for (int j = 0; j < i; j++) {
-                    res.add(value.subList(j * key, (j+1)*key));
+                    res.add(value.subList(j * key, (j + 1) * key));
                 }
             }
         });
         return res;
+    }
+
+    //807. 保持城市天际线
+    public static int maxIncreaseKeepingSkyline(int[][] grid) {
+//        int[] heightMaxArr = new int[grid.length];
+//        int[] weightMaxArr = new int[grid[0].length];
+//        for (int i = 0; i < grid.length; i++) {
+//            int heightMax = 0;
+//            int weightMax = 0;
+//            for (int j = 0; j < grid.length; j++) {
+//                if (heightMax < grid[i][j]) {
+//                    heightMax = grid[i][j];
+//                }
+//                if (weightMax < grid[j][i]) {
+//                    weightMax = grid[j][i];
+//                }
+//            }
+//            heightMaxArr[i] = heightMax;
+//            weightMaxArr[i] = weightMax;
+//        }
+//        int count = 0;
+//        for (int i = 0; i < grid.length; i++) {
+//            for (int j = 0; j < grid.length; j++) {
+//                int min = Math.min(heightMaxArr[i], weightMaxArr[j]);
+//                count += min-grid[i][j];
+//            }
+//        }
+//        return count;
+
+        int count = 0;
+        int[] heightMaxArr = new int[grid.length];
+        int[] weightMaxArr = new int[grid.length];
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid.length; j++) {
+                heightMaxArr[i] = Math.max(heightMaxArr[i],grid[i][j]);
+                weightMaxArr[i] = Math.max(weightMaxArr[i],grid[j][i]);
+
+            }
+        }
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid.length; j++) {
+                int min = Math.min(heightMaxArr[i], weightMaxArr[j]);
+                count += min-grid[i][j];
+            }
+        }
+        return count;
     }
 }
