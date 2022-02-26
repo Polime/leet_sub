@@ -11,7 +11,7 @@ import java.util.List;
 class LeetApplicationTests {
     @Test
     void contextLoads() {
-        maxIncreaseKeepingSkyline();
+        maximumDifference();
     }
 
     void summaryRanges() {
@@ -125,6 +125,11 @@ class LeetApplicationTests {
         System.out.println(Solution.maxIncreaseKeepingSkyline(num));
     }
 
+    void maximumDifference(){
+        int[] arr = new int[]{7,1,5,4};
+        int[] arr1 = new int[]{9,4,3,2};
+        System.out.println(Solution.maximumDifference(arr1));
+    }
 //    修改cache
 //    public static void main(String[] args) throws NoSuchFieldException, IllegalAccessException {
 //

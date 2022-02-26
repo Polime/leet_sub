@@ -799,17 +799,50 @@ class Solution {
         int[] weightMaxArr = new int[grid.length];
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid.length; j++) {
-                heightMaxArr[i] = Math.max(heightMaxArr[i],grid[i][j]);
-                weightMaxArr[i] = Math.max(weightMaxArr[i],grid[j][i]);
+                heightMaxArr[i] = Math.max(heightMaxArr[i], grid[i][j]);
+                weightMaxArr[i] = Math.max(weightMaxArr[i], grid[j][i]);
 
             }
         }
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid.length; j++) {
                 int min = Math.min(heightMaxArr[i], weightMaxArr[j]);
-                count += min-grid[i][j];
+                count += min - grid[i][j];
             }
         }
         return count;
+    }
+
+    //22. 括号生成
+    public static List<String> generateParenthesis(int n) {
+        return null;
+    }
+
+    //2016. 增量元素之间的最大差值
+    public static int maximumDifference(int[] nums) {
+        int max = 0;
+        boolean flag = true;
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = i + 1; j < nums.length; j++) {
+                if(nums[i] < nums[j] && max < (nums[j]-nums[i])){
+                    max = (nums[j]-nums[i]);
+                    flag = false;
+                }
+            }
+        }
+        return flag ? -1 : max;
+
+        //找到最小值，然后向后减，获得最大值，一次循环
+//        int max = -1;
+//        int min = nums[0];
+//        boolean flag = true;
+//        for (int num : nums) {
+//            if(min > num){
+//                min =  num;
+//                flag =false;
+//            }
+//            max = Math.max(max, num - min);
+//        }
+//        return flag ? -1 : max;
     }
 }
