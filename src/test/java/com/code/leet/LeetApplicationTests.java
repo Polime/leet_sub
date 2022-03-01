@@ -11,7 +11,7 @@ import java.util.List;
 class LeetApplicationTests {
     @Test
     void contextLoads() {
-        maximumDifference();
+        convert();
     }
 
     void summaryRanges() {
@@ -115,22 +115,23 @@ class LeetApplicationTests {
         System.out.println(Solution.complexNumberMultiply(num1, num2));
     }
 
-    void groupThePeople(){
-        int[] group = new int[]{2,2,1,1,1,1,1,1};
+    void groupThePeople() {
+        int[] group = new int[]{2, 2, 1, 1, 1, 1, 1, 1};
         System.out.println(Solution.groupThePeople(group));
     }
 
-    void maxIncreaseKeepingSkyline(){
-        int[][] num = new int[][]{{3,0,8,4},{2,4,5,7},{9,2,6,3},{0,3,1,0}};
+    void maxIncreaseKeepingSkyline() {
+        int[][] num = new int[][]{{3, 0, 8, 4}, {2, 4, 5, 7}, {9, 2, 6, 3}, {0, 3, 1, 0}};
         System.out.println(Solution.maxIncreaseKeepingSkyline(num));
     }
 
-    void maximumDifference(){
-        int[] arr = new int[]{7,1,5,4};
-        int[] arr1 = new int[]{9,4,3,2};
+    void maximumDifference() {
+        int[] arr = new int[]{7, 1, 5, 4};
+        int[] arr1 = new int[]{9, 4, 3, 2};
         System.out.println(Solution.maximumDifference(arr1));
     }
-//    修改cache
+
+    //    修改cache
 //    public static void main(String[] args) throws NoSuchFieldException, IllegalAccessException {
 //
 //        Class cache = Integer.class.getDeclaredClasses()[0]; //1
@@ -144,4 +145,10 @@ class LeetApplicationTests {
 //        int b = a + a;
 //        System.out.printf("%d + %d = %d", a, a, b); //
 //    }
+
+    void convert() {
+        String s = "PAYPALISHIRING";
+        int i = 3;
+        System.out.println(Solution.convert(s, i));
+    }
 }

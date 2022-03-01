@@ -824,8 +824,8 @@ class Solution {
         boolean flag = true;
         for (int i = 0; i < nums.length; i++) {
             for (int j = i + 1; j < nums.length; j++) {
-                if(nums[i] < nums[j] && max < (nums[j]-nums[i])){
-                    max = (nums[j]-nums[i]);
+                if (nums[i] < nums[j] && max < (nums[j] - nums[i])) {
+                    max = (nums[j] - nums[i]);
                     flag = false;
                 }
             }
@@ -844,5 +844,31 @@ class Solution {
 //            max = Math.max(max, num - min);
 //        }
 //        return flag ? -1 : max;
+    }
+
+    //6. Z 字形变换
+    public static String convert(String s, int numRows) {
+        int num = 0;
+        int l = numRows * 2 - 2;
+        int i = s.length() / l;
+        Character[][] arr = new Character[numRows][i];
+        char[] chars = s.toCharArray();
+        for (int j = 0; j < s.length(); j++) {
+            int k = j % l;
+            int y = j / l;
+            if (k >= numRows) {
+                arr[y][numRows * 2 - k - 2] = chars[j];
+            } else {
+                arr[y][k] = chars[j];
+            }
+            if (k == l - 1) {
+                num++;
+            }
+        }
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Character[] characters : arr) {
+            stringBuilder.append(Arrays.toString(characters));
+        }
+        return stringBuilder.toString();
     }
 }
