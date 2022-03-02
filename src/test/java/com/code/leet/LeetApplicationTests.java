@@ -1,17 +1,14 @@
 package com.code.leet;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
-import java.lang.reflect.Field;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 class LeetApplicationTests {
     @Test
     void contextLoads() {
-        convert();
+        pivotArray();
     }
 
     void summaryRanges() {
@@ -156,5 +153,11 @@ class LeetApplicationTests {
         String s3 = "AW";
         int i3 = 3;
         System.out.println(Solution.convert(s, i));
+    }
+
+    void pivotArray() {
+        int[] nums = new int[]{9, 12, 5, 10, 14, 3, 10};
+        int pivot = 10;
+        System.out.println(Arrays.toString(Solution.pivotArray(nums, pivot)));
     }
 }

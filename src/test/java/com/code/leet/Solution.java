@@ -2,6 +2,7 @@ package com.code.leet;
 
 import com.sun.deploy.util.StringUtils;
 
+import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.*;
@@ -873,12 +874,38 @@ class Solution {
         }
         StringBuilder res = new StringBuilder();
         for (String s1 : resArr) {
-            if(s1 != null){
+            if (s1 != null) {
                 res.append(s1);
             }
         }
         return res.toString();
 
         //偶数列正序遍历numRow次，奇数列倒叙numRow-2次，从1开始到numRow-3;
+    }
+
+    //2161. 根据给定数字划分数组
+    public static int[] pivotArray(int[] nums, int pivot) {
+        Map<Integer, List<Integer>> temp = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            int n = 0;
+            if (nums[i] == pivot) {
+                n = 1;
+            } else if (nums[i] > pivot) {
+                n = 2;
+            }
+            List<Integer> orDefault = temp.getOrDefault(n, new ArrayList<>());
+            orDefault.add(i);
+            temp.put(n, orDefault);
+        }
+        int[] res = new int[nums.length];
+        int n = 0;
+        for (int i = 0; i < 3; i++) {
+            List<Integer> list = temp.getOrDefault(i, new ArrayList<>());
+            for (Integer integer : list) {
+                res[n] = nums[integer];
+                n++;
+            }
+        }
+        return res;
     }
 }
