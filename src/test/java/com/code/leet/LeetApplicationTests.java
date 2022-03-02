@@ -149,6 +149,12 @@ class LeetApplicationTests {
     void convert() {
         String s = "PAYPALISHIRING";
         int i = 3;
+        String s1 = "PAYPALISHIRING";
+        int i1 = 4;
+        String s2 = "A";
+        int i2 = 1;
+        String s3 = "AW";
+        int i3 = 3;
         System.out.println(Solution.convert(s, i));
     }
 }

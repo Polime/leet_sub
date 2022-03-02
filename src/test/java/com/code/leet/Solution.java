@@ -1,5 +1,7 @@
 package com.code.leet;
 
+import com.sun.deploy.util.StringUtils;
+
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.*;
@@ -848,27 +850,35 @@ class Solution {
 
     //6. Z 字形变换
     public static String convert(String s, int numRows) {
-        int num = 0;
         int l = numRows * 2 - 2;
-        int i = s.length() / l;
-        Character[][] arr = new Character[numRows][i];
-        char[] chars = s.toCharArray();
-        for (int j = 0; j < s.length(); j++) {
-            int k = j % l;
-            int y = j / l;
-            if (k >= numRows) {
-                arr[y][numRows * 2 - k - 2] = chars[j];
+        char[] arr = s.toCharArray();
+        String[] resArr = new String[numRows];
+        int n = 0;
+        if (s.length() == 1 || numRows == 1) {
+            return s;
+        }
+        while (n != s.length()) {
+            int k = n % l;
+            if (k < numRows) {
+                if (resArr[k] == null) {
+                    resArr[k] = String.valueOf(arr[n]);
+                } else {
+                    resArr[k] += arr[n];
+                }
             } else {
-                arr[y][k] = chars[j];
+                int i1 = 2 * numRows - k - 2;
+                resArr[i1] += arr[n];
             }
-            if (k == l - 1) {
-                num++;
+            n++;
+        }
+        StringBuilder res = new StringBuilder();
+        for (String s1 : resArr) {
+            if(s1 != null){
+                res.append(s1);
             }
         }
-        StringBuilder stringBuilder = new StringBuilder();
-        for (Character[] characters : arr) {
-            stringBuilder.append(Arrays.toString(characters));
-        }
-        return stringBuilder.toString();
+        return res.toString();
+
+        //偶数列正序遍历numRow次，奇数列倒叙numRow-2次，从1开始到numRow-3;
     }
 }
