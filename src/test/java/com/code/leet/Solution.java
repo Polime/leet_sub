@@ -1018,4 +1018,21 @@ class Solution {
         }
         return max;
     }
+
+    //2125. 银行中的激光束数量
+    public static int numberOfBeams(String[] bank) {
+        int count = 0;
+        int last = 0;
+        for (String s : bank) {
+            int n = 0;
+            for (char c : s.toCharArray()) {
+                if (c == '1') n++;
+            }
+            if (n != 0) {
+                count += last * n;
+                last = n;
+            }
+        }
+        return count;
+    }
 }

@@ -8,7 +8,7 @@ import java.util.List;
 class LeetApplicationTests {
     @Test
     void contextLoads() {
-        maxProfit();
+        numberOfBeams();
     }
 
     void summaryRanges() {
@@ -170,5 +170,10 @@ class LeetApplicationTests {
         int[] num = new int[]{7, 1, 5, 3, 6,};
         int[] num1 = new int[]{7, 6, 4, 3, 1};
         System.out.println(Solution.maxProfit(num1));
+    }
+
+    void numberOfBeams() {
+        String[] s = new String[]{"011001", "000000", "010100", "001000"};
+        System.out.println(Solution.numberOfBeams(s));
     }
 }
