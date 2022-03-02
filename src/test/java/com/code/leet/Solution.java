@@ -992,4 +992,30 @@ class Solution {
         }
         return res.toString();
     }
+
+    //剑指 Offer 63. 股票的最大利润
+    public static int maxProfit(int[] prices) {
+//        int max = 0;
+//        for (int i = 0; i < prices.length; i++) {
+//            for (int j = i + 1; j < prices.length; j++) {
+//                if (prices[i] < prices[j]) {
+//                    max = Math.max((prices[j] - prices[i]), max);
+//                }
+//            }
+//        }
+//        return max;
+        if (prices.length == 0) {
+            return 0;
+        }
+        int min = prices[0];
+        int max = 0;
+        for (int i = 1; i < prices.length; i++) {
+            if (prices[i] < min) {
+                min = prices[i];
+            } else {
+                max = Math.max(prices[i] - min, max);
+            }
+        }
+        return max;
+    }
 }

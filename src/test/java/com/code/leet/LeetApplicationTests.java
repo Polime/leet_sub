@@ -8,7 +8,7 @@ import java.util.List;
 class LeetApplicationTests {
     @Test
     void contextLoads() {
-        pivotArray();
+        maxProfit();
     }
 
     void summaryRanges() {
@@ -164,5 +164,11 @@ class LeetApplicationTests {
     void toGoatLatin() {
         String s = "I am iron man";
         System.out.println(Solution.toGoatLatin(s));
+    }
+
+    void maxProfit() {
+        int[] num = new int[]{7, 1, 5, 3, 6,};
+        int[] num1 = new int[]{7, 6, 4, 3, 1};
+        System.out.println(Solution.maxProfit(num1));
     }
 }
