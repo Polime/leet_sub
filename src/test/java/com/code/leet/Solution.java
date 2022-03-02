@@ -885,27 +885,111 @@ class Solution {
 
     //2161. 根据给定数字划分数组
     public static int[] pivotArray(int[] nums, int pivot) {
-        Map<Integer, List<Integer>> temp = new HashMap<>();
-        for (int i = 0; i < nums.length; i++) {
-            int n = 0;
-            if (nums[i] == pivot) {
-                n = 1;
-            } else if (nums[i] > pivot) {
-                n = 2;
-            }
-            List<Integer> orDefault = temp.getOrDefault(n, new ArrayList<>());
-            orDefault.add(i);
-            temp.put(n, orDefault);
-        }
+//        Map<Integer, List<Integer>> temp = new HashMap<>();
+//        for (int i = 0; i < nums.length; i++) {
+//            int n = 0;
+//            if (nums[i] == pivot) {
+//                n = 1;
+//            } else if (nums[i] > pivot) {
+//                n = 2;
+//            }
+//            List<Integer> orDefault = temp.getOrDefault(n, new ArrayList<>());
+//            orDefault.add(i);
+//            temp.put(n, orDefault);
+//        }
+//        int[] res = new int[nums.length];
+//        int n = 0;
+//        for (int i = 0; i < 3; i++) {
+//            List<Integer> list = temp.getOrDefault(i, new ArrayList<>());
+//            for (Integer integer : list) {
+//                res[n] = nums[integer];
+//                n++;
+//            }
+//        }
+//        return res;
+
+        //三次遍历
+//        int n = nums.length, k = 0;
+//        int[] ans = new int[n];
+//        for (int num : nums) if (num < pivot) ans[k++] = num;
+//        for (int num : nums) if (num == pivot) ans[k++] = num;
+//        for (int num : nums) if (num > pivot) ans[k++] = num;
+//        return ans;
+
+        //三次遍历-迭代删除
+//        int n = nums.length;
+//        final int[] k = {0};
+//        int[] ans = new int[n];
+//        Arrays.stream(nums).filter(e -> e < pivot).forEach(e -> {
+//            ans[k[0]] = e;
+//            k[0] += 1;
+//        });
+//        Arrays.stream(nums).filter(e -> e == pivot).forEach(e -> {
+//            ans[k[0]] = e;
+//            k[0] += 1;
+//        });
+//        Arrays.stream(nums).filter(e -> e > pivot).forEach(e -> {
+//            ans[k[0]] = e;
+//            k[0] += 1;
+//        });
+//        return ans;
+
+//        int min = 0;
+//        int x = 0;
+//        int max = nums.length - 1;
+//        int y = nums.length - 1;
+//        int[] res = new int[nums.length];
+//        Arrays.fill(res, pivot);
+//        while (min <= nums.length - 1 && max >= 0) {
+//            if (nums[min] < pivot) {
+//                res[x] = nums[min];
+//                x++;
+//            }
+//            if (nums[max] > pivot) {
+//                res[y] = nums[max];
+//                y--;
+//            }
+//            min++;
+//            max--;
+//        }
+//        return res;
+
+        int x = 0;
+        int y = nums.length - 1;
         int[] res = new int[nums.length];
-        int n = 0;
-        for (int i = 0; i < 3; i++) {
-            List<Integer> list = temp.getOrDefault(i, new ArrayList<>());
-            for (Integer integer : list) {
-                res[n] = nums[integer];
-                n++;
+        Arrays.fill(res, pivot);
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] < pivot) {
+                res[x] = nums[i];
+                x++;
+            }
+            if (nums[nums.length - i - 1] > pivot) {
+                res[y] = nums[nums.length - i - 1];
+                y--;
             }
         }
         return res;
+    }
+
+    //824. 山羊拉丁文
+    public static String toGoatLatin(String sentence) {
+        String[] splits = sentence.split(" ");
+        StringBuilder res = new StringBuilder();
+        for (int i = 0; i < splits.length; i++) {
+            String s = splits[i].substring(0, 1).toLowerCase();
+            if (s.equals("a") || s.equals("e") || s.equals("i") || s.equals("o") || s.equals("u")) {
+                res.append(splits[i]);
+            } else {
+                res.append(splits[i].substring(1)).append(splits[i].charAt(0));
+            }
+            res.append("ma");
+            for (int j = 0; j < i + 1; j++) {
+                res.append("a");
+            }
+            if (i != splits.length - 1) {
+                res.append(" ");
+            }
+        }
+        return res.toString();
     }
 }

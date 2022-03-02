@@ -160,4 +160,9 @@ class LeetApplicationTests {
         int pivot = 10;
         System.out.println(Arrays.toString(Solution.pivotArray(nums, pivot)));
     }
+
+    void toGoatLatin() {
+        String s = "I am iron man";
+        System.out.println(Solution.toGoatLatin(s));
+    }
 }
