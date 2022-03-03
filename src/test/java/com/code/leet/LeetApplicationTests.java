@@ -2,13 +2,14 @@ package com.code.leet;
 
 import org.junit.jupiter.api.Test;
 
+import javax.xml.transform.Source;
 import java.util.Arrays;
 import java.util.List;
 
 class LeetApplicationTests {
     @Test
     void contextLoads() {
-        numberOfBeams();
+        addDigits();
     }
 
     void summaryRanges() {
@@ -175,5 +176,10 @@ class LeetApplicationTests {
     void numberOfBeams() {
         String[] s = new String[]{"011001", "000000", "010100", "001000"};
         System.out.println(Solution.numberOfBeams(s));
+    }
+
+    void addDigits() {
+        int num = 1239;
+        System.out.println(Solution.addDigits(num));
     }
 }

@@ -1035,4 +1035,17 @@ class Solution {
         }
         return count;
     }
+
+    //258. 各位相加
+    public static int addDigits(int num) {
+        if (num < 10) {
+            return num;
+        }
+        String s = String.valueOf(num);
+        int count = 0;
+        for (int i = 0; i < s.length(); i++) {
+            count+=s.charAt(i)-48;
+        }
+        return addDigits(count);
+    }
 }
