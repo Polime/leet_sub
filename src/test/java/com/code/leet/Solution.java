@@ -1044,7 +1044,7 @@ class Solution {
         String s = String.valueOf(num);
         int count = 0;
         for (int i = 0; i < s.length(); i++) {
-            count+=s.charAt(i)-48;
+            count += s.charAt(i) - 48;
         }
         return addDigits(count);
     }
