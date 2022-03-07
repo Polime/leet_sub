@@ -1048,4 +1048,31 @@ class Solution {
         }
         return addDigits(count);
     }
+
+    //504. 七进制数
+    public static String convertToBase7(int num) {
+        StringBuilder stringBuilder = new StringBuilder();
+        boolean flag = false;
+        if (num < 0) {
+            num = Math.abs(num);
+            flag = true;
+        }
+        if (num < 7) {
+            return flag ? "-"+ num : String.valueOf(num);
+        }
+        while (true) {
+            int i = num % 7;
+            stringBuilder.append(i);
+            int j = num / 7;
+            if (j < 7) {
+                stringBuilder.append(j);
+                break;
+            }
+            num = j;
+        }
+        if (flag) {
+            stringBuilder.append("-");
+        }
+        return stringBuilder.reverse().toString();
+    }
 }

@@ -9,7 +9,7 @@ import java.util.List;
 class LeetApplicationTests {
     @Test
     void contextLoads() {
-        addDigits();
+        convertToBase7();
     }
 
     void summaryRanges() {
@@ -181,5 +181,12 @@ class LeetApplicationTests {
     void addDigits() {
         int num = 1239;
         System.out.println(Solution.addDigits(num));
+    }
+
+    void convertToBase7() {
+        int num = 100;
+        int num1 = 4;
+        int num2 = -7;
+        System.out.println(Solution.convertToBase7(num2));
     }
 }
