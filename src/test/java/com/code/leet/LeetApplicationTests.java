@@ -7,9 +7,10 @@ import java.util.Arrays;
 import java.util.List;
 
 class LeetApplicationTests {
+
     @Test
     void contextLoads() {
-        convertToBase7();
+        majorityElement();
     }
 
     void summaryRanges() {
@@ -188,5 +189,20 @@ class LeetApplicationTests {
         int num1 = 4;
         int num2 = -7;
         System.out.println(Solution.convertToBase7(num2));
+    }
+
+    void property() {
+        System.out.println(Divination.getProbability());
+    }
+
+    void coin() {
+        System.out.println(Divination.getToddler());
+    }
+
+    /**
+     * 同构字符串
+     */
+    void isIsomorphic() {
+        System.out.println(Solution.isIsomorphic("abcdefghijklmnopqrstuvwxyzva","abcdefghijklmnopqrstuvwxyzck"));
     }
 }

@@ -469,12 +469,6 @@ class Solution {
         return res;
     }
 
-    //169. 多数元素
-    //面试题 17.10. 主要元素
-    public static int majorityElement(int[] nums) {
-        return 1;
-    }
-
     //540. 有序数组中的单一元素
     public static int singleNonDuplicate(int[] nums) {
 //        int num = 0;
@@ -1058,7 +1052,7 @@ class Solution {
             flag = true;
         }
         if (num < 7) {
-            return flag ? "-"+ num : String.valueOf(num);
+            return flag ? "-" + num : String.valueOf(num);
         }
         while (true) {
             int i = num % 7;
@@ -1074,5 +1068,80 @@ class Solution {
             stringBuilder.append("-");
         }
         return stringBuilder.reverse().toString();
+    }
+
+    //205. 同构字符串
+    public static boolean isIsomorphic(String s, String t) {
+//        //1.长度是否相同
+//        if (s.length() != t.length()) {
+//            return false;
+//        }
+//        //2.转数字
+//        char[] sChars = s.toCharArray();
+//        char[] tChars = t.toCharArray();
+//        Map<String, Integer> sMap = new HashMap<>();
+//        Map<String, Integer> tMap = new HashMap<>();
+//        int sNum = 1;
+//        int tNum = 1;
+//        StringBuilder sRes = new StringBuilder();
+//        StringBuilder tRes = new StringBuilder();
+//        for (int i = 0; i < s.length(); i++) {
+//            if (sMap.containsKey(String.valueOf(sChars[i]))) {
+//                sRes.append(sMap.get(String.valueOf(sChars[i])));
+//            } else {
+//                sMap.put(String.valueOf(sChars[i]), sNum);
+//                sRes.append(sNum);
+//                sNum++;
+//            }
+//            if (tMap.containsKey(String.valueOf(tChars[i]))) {
+//                tRes.append(tMap.get(String.valueOf(tChars[i])));
+//            } else {
+//                tMap.put(String.valueOf(tChars[i]), tNum);
+//                tRes.append(tNum);
+//                tNum++;
+//            }
+//        }
+//        System.out.println("sRes:" + sRes);
+//        System.out.println("tRes:" + tRes);
+//        //3.数字是否相同
+//        return sRes.toString().equals(tRes.toString());
+
+        if (s.length() != t.length()) {
+            return false;
+        }
+        return isomorphic(s).equals(isomorphic(t));
+    }
+
+    private static String isomorphic(String str) {
+        //2.转数字
+        char[] sChars = str.toCharArray();
+        Map<Character, Integer> map = new HashMap<>();
+        int sNum = 0;
+        StringBuilder count = new StringBuilder();
+        for (int i = 0; i < str.length(); i++) {
+            if (map.containsKey(sChars[i])) {
+                count.append(map.get(sChars[i]));
+            } else {
+                map.put(sChars[i], sNum);
+                count.append(sNum);
+                sNum++;
+            }
+        }
+        //3.数字是否相同
+        return count.toString();
+    }
+
+    //169. 多数元素
+    //面试题 17.10. 主要元素
+    public static int majorityElement(int[] nums) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int num : nums) {
+            Integer integer = map.getOrDefault(num, 0);
+            if (integer >= nums.length / 2) {
+                return num;
+            }
+            map.put(num, integer + 1);
+        }
+        return 0;
     }
 }
