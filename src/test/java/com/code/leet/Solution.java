@@ -1144,4 +1144,16 @@ class Solution {
         }
         return 0;
     }
+
+    //268. 丢失的数字
+    public static int missingNumber(int[] nums) {
+//        int count = (nums.length + 1) * nums.length / 2;
+//        int sum = Arrays.stream(nums).sum();
+//        return count - sum;
+        int count = (nums.length + 1) * nums.length / 2;
+        for (int num : nums) {
+            count -= num;
+        }
+        return count;
+    }
 }
