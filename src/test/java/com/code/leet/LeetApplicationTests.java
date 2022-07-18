@@ -2,7 +2,6 @@ package com.code.leet;
 
 import org.junit.jupiter.api.Test;
 
-import javax.xml.transform.Source;
 import java.util.Arrays;
 import java.util.List;
 
@@ -10,7 +9,7 @@ class LeetApplicationTests {
 
     @Test
     void contextLoads() {
-        majorityElement();
+        xorQueries();
     }
 
     void summaryRanges() {
@@ -203,6 +202,18 @@ class LeetApplicationTests {
      * 同构字符串
      */
     void isIsomorphic() {
-        System.out.println(Solution.isIsomorphic("abcdefghijklmnopqrstuvwxyzva","abcdefghijklmnopqrstuvwxyzck"));
+        System.out.println(Solution.isIsomorphic("abcdefghijklmnopqrstuvwxyzva", "abcdefghijklmnopqrstuvwxyzck"));
+    }
+
+    void twoSum() {
+        int[] numbers = new int[]{0, 3, 4, 0};
+        int target = 0;
+        System.out.println(Arrays.toString(Solution.twoSum(numbers, target)));
+    }
+
+    void xorQueries() {
+        int[][] queries = new int[][]{{0, 1}, {1, 2}, {0, 3}, {3, 3}};
+        int[] arr = new int[]{1, 3, 4, 8};
+        System.out.println(Arrays.toString(Solution.xorQueries(arr, queries)));
     }
 }

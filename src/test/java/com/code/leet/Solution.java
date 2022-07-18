@@ -1,12 +1,6 @@
 package com.code.leet;
 
-import com.sun.deploy.util.StringUtils;
-
-import java.io.Serializable;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.*;
-import java.util.stream.Collectors;
 
 class Solution {
     //88. 合并两个有序数组
@@ -285,7 +279,17 @@ class Solution {
 
     //167. 两数之和 II - 输入有序数组
     public static int[] twoSum(int[] numbers, int target) {
-        return null;
+        int[] res = new int[2];
+        for (int i = 0; i < numbers.length; i++) {
+            for (int j = i + 1; j < numbers.length; j++) {
+                if (numbers[i] + numbers[j] == target) {
+                    res[0] = i;
+                    res[1] = j;
+                    return res;
+                }
+            }
+        }
+        return res;
     }
 
     //面试题 01.01. 判定字符是否唯一
@@ -1155,5 +1159,18 @@ class Solution {
             count -= num;
         }
         return count;
+    }
+
+    //1310. 子数组异或查询
+    public static int[] xorQueries(int[] arr, int[][] queries) {
+        int[] resArr = new int[queries.length];
+        for (int i = 0; i < queries.length; i++) {
+            int res = 0;
+            for (int j = queries[i][0]; j <= queries[i][1]; j++) {
+                res = res ^ arr[j];
+            }
+            resArr[i] = res;
+        }
+        return resArr;
     }
 }
