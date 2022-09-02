@@ -1,6 +1,7 @@
 package com.code.leet;
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 class Solution {
     //88. 合并两个有序数组
@@ -1172,5 +1173,54 @@ class Solution {
             resArr[i] = res;
         }
         return resArr;
+    }
+
+    //1260. 二维网格迁移
+    public List<List<Integer>> shiftGrid(int[][] grid, int k) {
+        int[][] resArr = new int[grid.length][grid[0].length];
+        return null;
+    }
+
+    //1475. 商品折扣后的最终价格
+    public int[] finalPrices(int[] prices) {
+        int[] res = new int[prices.length];
+        for (int i = 0; i < prices.length; i++) {
+            int min = 0;
+            for (int j = i + 1; j < prices.length; j++) {
+                if (prices[i] >= prices[j]) {
+                    min = prices[j];
+                    break;
+                }
+            }
+            res[i] = prices[i] - min;
+        }
+        return res;
+    }
+
+    //137. 只出现一次的数字 II
+    public int singleNumber(int[] nums) {
+//        Set<Integer> res = new HashSet<>();
+//        Set<Integer> temp = new HashSet<>();
+//        for (int num : nums) {
+//            if (temp.contains(num)) {
+//                res.remove(num);
+//            } else {
+//                res.add(num);
+//            }
+//            temp.add(num);
+//        }
+//        return res.iterator().next();
+        int res = 0;
+        Map<Integer, Integer> temp = new HashMap<>();
+        for (int num : nums) {
+            Integer i = temp.getOrDefault(num, 0);
+            temp.put(num, i + 1);
+        }
+        for (Map.Entry<Integer, Integer> entry : temp.entrySet()) {
+            if (entry.getValue() == 1) {
+                return entry.getKey();
+            }
+        }
+        return res;
     }
 }
